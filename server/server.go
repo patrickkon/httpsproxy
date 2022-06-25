@@ -38,14 +38,13 @@ import (
 	"sync"
 	"syscall"
 
-	_ "github.com/Jigsaw-Code/volunteer/server/inithack"
+	// _ "github.com/Jigsaw-Code/volunteer/server/inithack"
 
 	pt "git.torproject.org/pluggable-transports/goptlib.git"
-	"github.com/mholt/caddy"
+	"github.com/caddyserver/caddy"
 
 	// imports below are to run init() and register the forwardproxy plugin, set default variables
 	_ "github.com/caddyserver/forwardproxy"
-	_ "github.com/mholt/caddy/caddy/caddymain"
 )
 
 // TODO: stop goroutine leaking in copyLoops
