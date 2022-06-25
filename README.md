@@ -90,6 +90,9 @@ In the meantime, here's how to test it with Tor Browser Bundle:
   PATH_TO_CLIENT=`pwd`
   PATH_TO_TORRC="/etc/tor/torrc" # if TBB is used, path will be different
   echo "ClientTransportPlugin httpsproxy exec ${PATH_TO_CLIENT}/client" >> $PATH_TO_TORRC
+  
+  # On Mac:
+  PATH_TO_TORRC="~/Library/Application Support/TorBrowser-Data/Tor/torrc"
 ```
 4. Launch Tor Browser, select "Tor is censored in my country" -> "Provide a bridge I know"
 5. Copy bridge line like "httpsproxy 0.4.2.0:3 url=https://username:password@httpsproxy.com".
