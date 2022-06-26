@@ -46,6 +46,11 @@ sudo systemctl start tor
 sudo less +F /var/log/tor/log
 sudo less +F /var/lib/tor/pt_state/caddy.log
 ```
+With docker:
+```bash
+docker run -p 9001:9001 -p 9002:9002 -it -d --privileged --platform linux/amd64 --name my-mac-ubuntu-x86-v2 soproman/my-mac-ubuntu-x86:v2
+```
+
 
 ### PT arguments
 As mentioned in code, `flag` package is global and PT arguments are passed together with those of Caddy.
