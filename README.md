@@ -24,7 +24,7 @@ sudo systemctl daemon-reload
 
 # don't forget to set correct ContactInfo
 sudo cat <<EOT >> /etc/tor/torrc
-  RunAsDaemon 1
+  # RunAsDaemon 1 # we don't want to run as daemon for now
   BridgeRelay 1
   ExitRelay 0
 
@@ -39,6 +39,14 @@ sudo cat <<EOT >> /etc/tor/torrc
   ContactInfo Dr Stephen Falken steph@gtnw.org
   Nickname joshua
 EOT
+
+# Add IPtables rules: (make this a private bridge. Only allow specific access) (not persistent for now)
+sudo iptables -A INPUT -p tcp --dport 9001 -s 168.5.147.131 -j ACCEPT # this is my own ip (replace with your own as necessary)
+sudo iptables -A INPUT -p tcp --dport 9002 -s 168.5.147.131 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 9001 -i lo -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 9002 -i lo -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 9001 -j DROP
+sudo iptables -A INPUT -p tcp --dport 9002 -j DROP
 
 sudo systemctl start tor
 
